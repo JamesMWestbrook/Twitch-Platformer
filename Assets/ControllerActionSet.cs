@@ -12,6 +12,16 @@ public class ControllerActionSet : PlayerActionSet
     public PlayerTwoAxisAction Move;
     public PlayerAction Jump;
 
+    public PlayerAction CameraLeft;
+    public PlayerAction CameraRight;
+    public PlayerAction CameraUp;
+    public PlayerAction CameraDown;
+    public PlayerOneAxisAction CameraHorizontal;
+    public PlayerOneAxisAction CameraVertical;
+    public PlayerTwoAxisAction CameraMove;
+    public PlayerAction CameraToggle;
+
+
     public ControllerActionSet()
     {
         Left = CreatePlayerAction("Left");
@@ -20,6 +30,15 @@ public class ControllerActionSet : PlayerActionSet
         Down = CreatePlayerAction("Down");
         Move = CreateTwoAxisPlayerAction(Left, Right, Down, Up);
         Jump = CreatePlayerAction("Jump");
+
+        CameraLeft = CreatePlayerAction("Camera Left");
+        CameraRight = CreatePlayerAction("Camera Right");
+        CameraHorizontal = CreateOneAxisPlayerAction(CameraLeft, CameraRight);
+        CameraUp = CreatePlayerAction("Camera Up");
+        CameraDown = CreatePlayerAction("Camera Down");
+        CameraVertical = CreateOneAxisPlayerAction(CameraDown, CameraUp);
+
+        CameraMove = CreateTwoAxisPlayerAction(CameraLeft, CameraRight, CameraDown, CameraUp);
     }
 
     public  ControllerActionSet CreateWithJoyStickBindings()
@@ -31,6 +50,11 @@ public class ControllerActionSet : PlayerActionSet
         actions.Down.AddDefaultBinding(InputControlType.LeftStickDown);
 
         actions.Jump.AddDefaultBinding(InputControlType.Action1);
+
+        actions.CameraLeft.AddDefaultBinding(InputControlType.RightStickLeft);
+        actions.CameraRight.AddDefaultBinding(InputControlType.RightStickRight);
+        actions.CameraUp.AddDefaultBinding(InputControlType.RightStickUp);
+        actions.CameraDown.AddDefaultBinding(InputControlType.RightStickDown);
         return actions;
     }
     public static ControllerActionSet CreateWithKeyboardBindings()

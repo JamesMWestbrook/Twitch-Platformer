@@ -1,35 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Cinemachine;
 public class Player : MonoBehaviour
 {
-    ControllerActionSet actions;
+    public ControllerActionSet actions;
     public bool Grounded = true;
     public float JumpForce = 500;
     public float MoveSpeed;
     [SerializeField] private Rigidbody RB;
-
+    public Transform Camera;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         actions = new ControllerActionSet();
         actions = actions.CreateWithJoyStickBindings();
-
+        CinemachineCore.GetInputAxis = GetAxisCustom;
     }
-
+    public float GetAxisCustom(string axisName)
+    {
+        if(axisName == "x")
+        {
+            return actions.CameraMove.X;
+        }
+        else if(axisName == "y")
+        {
+            return actions.CameraMove.Y;
+        }
+        return 0;
+    }
     // Update is called once per frame
     void Update()
     {
         Movement();
         VerticalMovement();
+
+        CameraMovement();
+    }
+    public void CameraMovement()
+    {
+//        freeLook.m_XAxis.
     }
     private void Movement()
     {
         Vector2 input = new Vector2(actions.Move.X, actions.Move.Y);
-        transform.Translate(Vector3.forward * input.y * MoveSpeed * Time.deltaTime);
-        transform.Translate(Vector3.right * input.x * MoveSpeed * Time.deltaTime);
+        transform.Translate(Camera.forward * input.y * MoveSpeed * Time.deltaTime);
+        transform.Translate(Camera.right * input.x * MoveSpeed * Time.deltaTime);
     }
     private void VerticalMovement()
     {
