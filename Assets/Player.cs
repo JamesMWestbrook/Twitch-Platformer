@@ -35,9 +35,14 @@ public class Player : MonoBehaviour
     
     void Update()
     {
+    }
+    private void FixedUpdate()
+    {
         Rotation();
+
         Movement();
         VerticalMovement();
+
     }
     private void Rotation()
     {
@@ -58,7 +63,10 @@ public class Player : MonoBehaviour
 
         if (actions.Move)
         {
-            transform.Translate( transform.forward * value * speed * Time.deltaTime, Space.World);
+            float YVelocity = RB.velocity.y;
+            // transform.Translate( transform.forward * value * speed * Time.deltaTime, Space.World);
+            RB.velocity = transform.forward * value * speed * Time.deltaTime;
+            RB.velocity = new Vector3(RB.velocity.x, YVelocity, RB.velocity.z);
         }
     }
 
