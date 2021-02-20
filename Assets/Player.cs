@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Rigidbody RB;
     public Transform Camera;
-
     // Start is called before the first frame update
     void Awake()
     {
@@ -36,17 +35,31 @@ public class Player : MonoBehaviour
     
     void Update()
     {
+        Rotation();
         Movement();
         VerticalMovement();
     }
-
-    private void Movement()
+    private void Rotation()
     {
         Vector2 input = new Vector2(actions.Move.X, actions.Move.Y);
+        Vector3 NextDir = new Vector3(input.x, 0, input.y);
+        NextDir = Camera.TransformDirection(NextDir);
+        NextDir.y = 0f;
+        if (actions.Move)
+        {
+            transform.rotation = Quaternion.LookRotation(NextDir);
+        }
 
-        transform.Translate(Camera.forward * input.y * MoveSpeed * Time.deltaTime);
-        transform.Translate(Camera.right * input.x * MoveSpeed * Time.deltaTime);
+    }
+    private void Movement()
+    {
+        float speed = MoveSpeed;
+        float value =Mathf.Clamp( Mathf.Abs(actions.Move.X) + Mathf.Abs(actions.Move.Y), 0, 1);
 
+        if (actions.Move)
+        {
+            transform.Translate( transform.forward * value * speed * Time.deltaTime, Space.World);
+        }
     }
 
     private void VerticalMovement()
