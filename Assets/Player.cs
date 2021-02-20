@@ -7,7 +7,10 @@ public class Player : MonoBehaviour
     public ControllerActionSet actions;
     public bool Grounded = true;
     public float JumpForce = 800;
+    
     public float MoveSpeed;
+    public float RunSpeed;
+
     [SerializeField] private Rigidbody RB;
     public Transform Camera;
 
@@ -30,18 +33,22 @@ public class Player : MonoBehaviour
         }
         return 0;
     }
-    // Update is called once per frame
+    
     void Update()
     {
         Movement();
         VerticalMovement();
     }
+
     private void Movement()
     {
         Vector2 input = new Vector2(actions.Move.X, actions.Move.Y);
+
         transform.Translate(Camera.forward * input.y * MoveSpeed * Time.deltaTime);
         transform.Translate(Camera.right * input.x * MoveSpeed * Time.deltaTime);
+
     }
+
     private void VerticalMovement()
     {
         if (actions.Jump && Grounded)
