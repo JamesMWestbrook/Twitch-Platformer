@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     public ControllerActionSet actions;
     public bool Grounded = true;
-    public float JumpForce = 500;
+    public float JumpForce = 800;
     public float MoveSpeed;
     [SerializeField] private Rigidbody RB;
     public Transform Camera;
@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     void Awake()
     {
         actions = new ControllerActionSet();
-        actions = actions.CreateWithJoyStickBindings();
+        actions = actions.CreateWithAllBindings();
         CinemachineCore.GetInputAxis = GetAxisCustom;
     }
     public float GetAxisCustom(string axisName)
@@ -35,12 +35,6 @@ public class Player : MonoBehaviour
     {
         Movement();
         VerticalMovement();
-
-        CameraMovement();
-    }
-    public void CameraMovement()
-    {
-//        freeLook.m_XAxis.
     }
     private void Movement()
     {
@@ -58,11 +52,11 @@ public class Player : MonoBehaviour
         Vector3 velocity = RB.velocity;
         if (velocity.y < 0)
         {
-            RB.drag = 3;
+         //   RB.drag = 3;
         }
         else
         {
-            RB.drag = 0;
+     //       RB.drag = 0;
         }
     }
     private void OnCollisionEnter(Collision collision)

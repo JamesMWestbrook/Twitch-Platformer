@@ -40,17 +40,56 @@ public class ControllerActionSet : PlayerActionSet
 
         CameraMove = CreateTwoAxisPlayerAction(CameraLeft, CameraRight, CameraDown, CameraUp);
     }
-
-    public  ControllerActionSet CreateWithJoyStickBindings()
+    public ControllerActionSet CreateWithAllBindings()
     {
         var actions = new ControllerActionSet();
+        //Controller
+        //Movement
         actions.Left.AddDefaultBinding(InputControlType.LeftStickLeft);
         actions.Right.AddDefaultBinding(InputControlType.LeftStickRight);
         actions.Up.AddDefaultBinding(InputControlType.LeftStickUp);
         actions.Down.AddDefaultBinding(InputControlType.LeftStickDown);
-
+        //Buttons
         actions.Jump.AddDefaultBinding(InputControlType.Action1);
+        //Camera
+        actions.CameraLeft.AddDefaultBinding(InputControlType.RightStickLeft);
+        actions.CameraRight.AddDefaultBinding(InputControlType.RightStickRight);
+        actions.CameraUp.AddDefaultBinding(InputControlType.RightStickUp);
+        actions.CameraDown.AddDefaultBinding(InputControlType.RightStickDown);
 
+        //Keyboard
+        //Movement
+        actions.Left.AddDefaultBinding(Key.A);
+        actions.Right.AddDefaultBinding(Key.D);
+        actions.Up.AddDefaultBinding(Key.W);
+        actions.Down.AddDefaultBinding(Key.S);
+        //Buttons
+        actions.Jump.AddDefaultBinding(Key.Space);
+        //Camera
+        actions.CameraLeft.AddDefaultBinding(Key.LeftArrow);
+        actions.CameraRight.AddDefaultBinding(Key.RightArrow);
+        actions.CameraUp.AddDefaultBinding(Key.UpArrow);
+        actions.CameraDown.AddDefaultBinding(Key.DownArrow);
+        //Mouse Camera
+        actions.CameraLeft.AddDefaultBinding(Mouse.NegativeX);
+        actions.CameraRight.AddDefaultBinding(Mouse.PositiveX);
+        actions.CameraUp.AddDefaultBinding(Mouse.PositiveY);
+        actions.CameraDown.AddDefaultBinding(Mouse.NegativeY);
+
+
+        return actions;
+    }
+    public  ControllerActionSet CreateWithJoyStickBindings()
+    {
+        var actions = new ControllerActionSet();
+        //Movement
+        actions.Left.AddDefaultBinding(InputControlType.LeftStickLeft);
+        actions.Right.AddDefaultBinding(InputControlType.LeftStickRight);
+        actions.Up.AddDefaultBinding(InputControlType.LeftStickUp);
+        actions.Down.AddDefaultBinding(InputControlType.LeftStickDown);
+        //Buttons
+        actions.Jump.AddDefaultBinding(InputControlType.Action1);
+        //Camera
         actions.CameraLeft.AddDefaultBinding(InputControlType.RightStickLeft);
         actions.CameraRight.AddDefaultBinding(InputControlType.RightStickRight);
         actions.CameraUp.AddDefaultBinding(InputControlType.RightStickUp);
@@ -60,8 +99,23 @@ public class ControllerActionSet : PlayerActionSet
     public static ControllerActionSet CreateWithKeyboardBindings()
     {
         var actions = new ControllerActionSet();
-
-        
+        //Movement
+        actions.Left.AddDefaultBinding(Key.A);
+        actions.Right.AddDefaultBinding(Key.D);
+        actions.Up.AddDefaultBinding(Key.W);
+        actions.Down.AddDefaultBinding(Key.S);
+        //Buttons
+        actions.Jump.AddDefaultBinding(Key.Space);
+        //Camera
+        actions.CameraLeft.AddDefaultBinding(Key.LeftArrow);
+        actions.CameraRight.AddDefaultBinding(Key.RightArrow);
+        actions.CameraUp.AddDefaultBinding(Key.UpArrow);
+        actions.CameraDown.AddDefaultBinding(Key.DownArrow);
+        //Mouse Camera
+        actions.CameraLeft.AddDefaultBinding(Mouse.NegativeX);
+        actions.CameraRight.AddDefaultBinding(Mouse.PositiveX);
+        actions.CameraUp.AddDefaultBinding(Mouse.PositiveY);
+        actions.CameraDown.AddDefaultBinding(Mouse.NegativeY);
         return actions;
     }
 }
