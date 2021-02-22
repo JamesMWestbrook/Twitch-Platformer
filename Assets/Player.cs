@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
         if (actions.Jump && Grounded)
         {
             Grounded = false;
-            RB.AddForce(Vector3.up * JumpForce);
+            RB.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
         }
         Vector3 velocity = RB.velocity;
         if (velocity.y < 0)
@@ -90,5 +90,16 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "floor") Grounded = true;
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        //wall
+
+        if (Grounded) return;
+        if(other.gameObject.CompareTag("wall"))
+        {
+            Debug.Log("Wall");
+        }
     }
 }
