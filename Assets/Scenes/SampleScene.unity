@@ -315,7 +315,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 190293986}
-  m_LocalRotation: {x: 0.1145215, y: 0.6996091, z: -0.115144156, w: 0.69582593}
+  m_LocalRotation: {x: 0.11452147, y: 0.69960916, z: -0.11514415, w: 0.695826}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -806,6 +806,8 @@ MonoBehaviour:
   RunSpeed: 0
   RB: {fileID: 521044138}
   Camera: {fileID: 963194228}
+  MaxJumps: 1
+  CurJumps: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1725,7 +1727,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 852648783}
-  m_LocalRotation: {x: 0.10184583, y: 0.7015878, z: -0.10239956, w: 0.6977939}
+  m_LocalRotation: {x: 0.101845816, y: 0.7015878, z: -0.102399535, w: 0.69779396}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1810,8 +1812,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.1048618, y: 0.70113856, z: -0.10543194, w: 0.69734704}
-  m_LocalPosition: {x: 4.0370636, y: 5.2466364, z: 7.7122555}
+  m_LocalRotation: {x: 0.10486177, y: 0.70113856, z: -0.10543192, w: 0.69734704}
+  m_LocalPosition: {x: 4.0370626, y: 5.2466364, z: 7.7122555}
   m_LocalScale: {x: 1, y: 1.0521883, z: 0.91257}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3145,7 +3147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1547101425}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.0370636, y: 5.2466364, z: 7.7122555}
+  m_LocalPosition: {x: 4.0370626, y: 5.2466364, z: 7.7122555}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 190293988}
@@ -3220,8 +3222,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650756516}
-  m_LocalRotation: {x: 0.08929539, y: 0.7022322, z: -0.08949923, w: 0.70063275}
-  m_LocalPosition: {x: -0.0012254715, y: 0, z: -0.024482727}
+  m_LocalRotation: {x: 0.08917007, y: 0.70333004, z: -0.089654885, w: 0.6995267}
+  m_LocalPosition: {x: 0.0000009536743, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 314477726}
@@ -3324,6 +3326,8 @@ MonoBehaviour:
   RunSpeed: 0
   RB: {fileID: 2074178001}
   Camera: {fileID: 0}
+  MaxJumps: 0
+  CurJumps: 0
 --- !u!54 &2074178001
 Rigidbody:
   m_ObjectHideFlags: 0

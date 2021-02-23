@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
         actions = new ControllerActionSet();
         actions = actions.CreateWithAllBindings();
         CinemachineCore.GetInputAxis = GetAxisCustom;
+
     }
     public float GetAxisCustom(string axisName)
     {
@@ -35,13 +36,13 @@ public class Player : MonoBehaviour
     
     void Update()
     {
+        VerticalMovement();
     }
     private void FixedUpdate()
     {
         Rotation();
 
         Movement();
-        VerticalMovement();
 
     }
     private void Rotation()
@@ -70,12 +71,15 @@ public class Player : MonoBehaviour
         }
     }
 
+    public float MaxJumps;
+    public float CurJumps;
     private void VerticalMovement()
     {
-        if (actions.Jump && Grounded)
+        if (actions.Jump.WasPressed && Grounded ||  actions.Jump.WasPressed && CurJumps < MaxJumps)
         {
             Grounded = false;
             RB.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
+            CurJumps++;
         }
         Vector3 velocity = RB.velocity;
         if (velocity.y < 0)
@@ -89,17 +93,22 @@ public class Player : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "floor") Grounded = true;
+        if (collision.gameObject.tag == "floor")
+        {
+            Grounded = true;
+            CurJumps = 0;
+        }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        //wall
 
         if (Grounded) return;
         if(other.gameObject.CompareTag("wall"))
         {
             Debug.Log("Wall");
+            RB.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
+            RB.AddForce(Vector3.back * JumpForce, ForceMode.Impulse);
         }
     }
 }
